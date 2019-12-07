@@ -1,1 +1,0 @@
-Jakas zmiana w pliku numer 1
