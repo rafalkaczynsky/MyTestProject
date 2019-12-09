@@ -1,46 +1,39 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  Text,
-  StyleSheet,
-  View
-} from 'react-native';
+import { createStore, applyMiddleware } from 'redux'; // 1
+import { createLogger } from 'redux-logger';
+import { Provider } from 'react-redux'; //4
+import allReducers from './reducer'; // 3
+import AppContainer from './AppContainer';
 
-
+const logger = createLogger({});
+const store = createStore(allReducers, {}, applyMiddleware(logger)); // 2
 export interface AppProps {
-
+  //..
 }
 
 export interface AppState {
-    isVisible: boolean;
-    text: string;
+  isVisible: boolean;
+  text: string;
 }
 
-class App extends React.Component<AppProps, AppState>{
-    state: AppState;
+class App extends React.Component<AppProps, AppState> {
+  state: AppState;
 
-    constructor(props){
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isVisible: true,
-            text: "RAF"
-        }
-    }
-    render(){
-        return (
-                <View style={{flex: 1, backgroundColor: 'lighgrey',  alignItems: 'center', justifyContent: 'space-around'}}>
-                    <Text style={{fontSize: 17}}>Hello I'm App</Text>
-                    <View >
-                        <Text style={{fontSize: 17}}>Hello johny</Text>
-                    </View>
-                </View>
-      );
-    }
+    this.state = {
+      isVisible: true,
+      text: 'RAF',
+    };
+  }
+
+  render() {
+    return (
+      <Provider store={store}>
+        <AppContainer />
+      </Provider>
+    );
+  }
 }
-
-const styles = StyleSheet.create({
-
-});
-
 export default App;

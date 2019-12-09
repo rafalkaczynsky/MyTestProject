@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "allowJs": true,
+      "skipLibCheck": true,
+      "allowSyntheticDefaultImports": true,
+      "experimentalDecorators": true,
+      "jsx": "react-native",
+      "module": "es2015",
+      "moduleResolution": "node",
+      "outDir": "build",
+      "pretty": true,
+      "strictNullChecks": true,
+      "inlineSources": true,
+      "inlineSourceMap": true,
+      "target": "es6",
+      "types": ["jest", "react", "react-native"],
+      "noEmit": true
+    },
+    "include": ["src/**/*.ts", "src/**/*.tsx"],
+    "exclude": [
+      "**/node_modules/",
+      "Pod/Assets",
+      "externals",
+      "build",
+      "index.ios.js",
+      "**/__mocks__",
+      "**/__tests__/"
+    ]
+  }
+  
